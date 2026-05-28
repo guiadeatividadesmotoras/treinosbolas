@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>50 Desafios com Bola</title>
+  <meta name="description" content="Site interativo com 50 desafios com bola para pais e filhos: coordenação, equilíbrio e diversão em casa ou ao ar livre." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <nav class="topbar">
+        <div class="brand">
+          <span class="brand-badge">⚽</span>
+          <div>
+            <strong>50 Desafios com Bola</strong>
+            <p>Coordenação, Equilíbrio e Diversão</p>
+          </div>
+        </div>
+        <button id="themeToggle" class="ghost-btn" aria-label="Alternar tema">🌙</button>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="tag">Site-produto interativo para famílias</span>
+          <h1>Brinque, explore e evolua com <span>50 desafios com bola</span></h1>
+          <p>
+            Um site dinâmico para pais e filhos escolherem desafios, marcarem progresso,
+            salvarem favoritos e criarem momentos divertidos juntos.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#desafios" class="primary-btn">Ver desafios</a>
+            <button id="randomHeroBtn" class="secondary-btn">Sortear desafio</button>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <strong>50</strong>
+              <span>desafios prontos</span>
+            </article>
+            <article class="stat-card">
+              <strong>6</strong>
+              <span>categorias</span>
+            </article>
+            <article class="stat-card">
+              <strong id="doneCountHero">0</strong>
+              <span>concluídos</span>
+            </article>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="panel-card">
+            <h2>Como usar</h2>
+            <ul>
+              <li>Escolha por categoria, idade ou dificuldade</li>
+              <li>Abra o cartão e siga o passo a passo</li>
+              <li>Marque como concluído para acompanhar a evolução</li>
+              <li>Use o sorteio para brincar sem pensar demais</li>
+            </ul>
+          </div>
+
+          <div class="panel-card highlight">
+            <h3>Missão do dia</h3>
+            <p id="dailyChallengeText">Clique abaixo para receber 3 desafios sugeridos.</p>
+            <button id="dailyMissionBtn" class="primary-btn full">Gerar missão do dia</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section intro">
+      <div class="container intro-grid">
+        <article class="info-card">
+          <span>🎯</span>
+          <h3>Coordenação</h3>
+          <p>Atividades que desenvolvem precisão, ritmo, controle e noção corporal.</p>
+        </article>
+        <article class="info-card">
+          <span>🧍</span>
+          <h3>Equilíbrio</h3>
+          <p>Desafios com apoio, postura, mudança de base e domínio do corpo.</p>
+        </article>
+        <article class="info-card">
+          <span>😄</span>
+          <h3>Diversão em família</h3>
+          <p>Experiências leves, simples e repetíveis para brincar em casa ou no quintal.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section controls-section" id="desafios">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="tag">Biblioteca interativa</span>
+            <h2>Escolha o próximo desafio</h2>
+          </div>
+          <div class="progress-box">
+            <div class="progress-copy">
+              <strong>Seu progresso</strong>
+              <span id="progressLabel">0 de 50 concluídos</span>
+            </div>
+            <div class="progress-bar"><span id="progressBar"></span></div>
+          </div>
+        </div>
+
+        <div class="controls-card">
+          <div class="filters-grid">
+            <label>
+              <span>Buscar</span>
+              <input type="text" id="searchInput" placeholder="Ex.: quicar, equilíbrio, dupla..." />
+            </label>
+
+            <label>
+              <span>Categoria</span>
+              <select id="categoryFilter">
+                <option value="all">Todas</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Dificuldade</span>
+              <select id="difficultyFilter">
+                <option value="all">Todas</option>
+                <option value="Fácil">Fácil</option>
+                <option value="Médio">Médio</option>
+                <option value="Desafiador">Desafiador</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Local</span>
+              <select id="placeFilter">
+                <option value="all">Todos</option>
+                <option value="Dentro de casa">Dentro de casa</option>
+                <option value="Ao ar livre">Ao ar livre</option>
+                <option value="Ambos">Ambos</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <button class="chip active" data-quick="all">Todos</button>
+              <button class="chip" data-quick="favorites">Favoritos</button>
+              <button class="chip" data-quick="done">Concluídos</button>
+              <button class="chip" data-quick="pending">Pendentes</button>
+            </div>
+            <div class="toolbar-right">
+              <button id="randomBtn" class="ghost-btn">🎲 Sortear</button>
+              <button id="resetBtn" class="ghost-btn danger">↺ Resetar progresso</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="missionBoard" class="mission-board hidden"></div>
+        <div id="challengeGrid" class="challenge-grid"></div>
+      </div>
+    </section>
+
+    <section class="section tips-section">
+      <div class="container tips-grid">
+        <div class="tips-card">
+          <h2>Dicas para os pais</h2>
+          <ul>
+            <li>Adapte o espaço para manter a brincadeira segura</li>
+            <li>Comece pelos níveis fáceis e aumente aos poucos</li>
+            <li>Valorize o esforço e não apenas o acerto</li>
+            <li>Repita os desafios preferidos para reforçar a confiança</li>
+          </ul>
+        </div>
+        <div class="tips-card soft">
+          <h2>O que o site faz</h2>
+          <ul>
+            <li>Filtra desafios por perfil e momento</li>
+            <li>Salva progresso automaticamente no navegador</li>
+            <li>Permite favoritar os melhores desafios</li>
+            <li>Gera missão do dia e sorteio rápido</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
